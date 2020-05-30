@@ -193,6 +193,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &588772929
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 588772931}
+  - component: {fileID: 588772930}
+  m_Layer: 0
+  m_Name: ObjectPooler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &588772930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588772929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f046c439c7e94e52add677cbdf4b34bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pools:
+  - ObjectToPool: {fileID: 1703773256361121198, guid: 41dc64324ac5b45dfaf8a952e24ebf5b,
+      type: 3}
+    PrewarmAmount: 60
+    CanExpand: 1
+    Name: Enemy
+  - ObjectToPool: {fileID: 711500008623073168, guid: 9790881b46f064a7193fae7141de47a9,
+      type: 3}
+    PrewarmAmount: 40
+    CanExpand: 1
+    Name: LaserBlue
+  - ObjectToPool: {fileID: 6803142163032759959, guid: 61ff367f814884693ad8f1da4c8e3269,
+      type: 3}
+    PrewarmAmount: 200
+    CanExpand: 1
+    Name: LaserGreen
+--- !u!4 &588772931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588772929}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &926676127
 GameObject:
   m_ObjectHideFlags: 0

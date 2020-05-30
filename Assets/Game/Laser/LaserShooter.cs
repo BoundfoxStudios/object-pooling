@@ -1,15 +1,14 @@
-using System;
+using BoundfoxStudios.ObjectPoolingSample.ObjectPooling;
 using UnityEngine;
 
 namespace BoundfoxStudios.ObjectPoolingSample.Laser
 {
   public class LaserShooter : MonoBehaviour
   {
-    public float FireSpeed = 0.6f;
-    public Laser LaserPrefab;
-    public Transform[] StartPositions;
-
     private float _timeToNextFire;
+    public float FireSpeed = 0.6f;
+    public string LaserName;
+    public Transform[] StartPositions;
 
     private void Start()
     {
@@ -28,9 +27,15 @@ namespace BoundfoxStudios.ObjectPoolingSample.Laser
     {
       foreach (var startTransform in StartPositions)
       {
-        Instantiate(LaserPrefab, startTransform.position, Quaternion.identity);
+        var instance = ObjectPoolManager.Instance.Get(LaserName);
+
+        if (instance)
+        {
+          instance.transform.position = startTransform.position;
+          instance.SetActive(true);
+        }
       }
-      
+
       _timeToNextFire = Time.time + FireSpeed;
     }
   }

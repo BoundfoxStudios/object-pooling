@@ -324,8 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireSpeed: 1
-  LaserPrefab: {fileID: 5465980356221426558, guid: 61ff367f814884693ad8f1da4c8e3269,
-    type: 3}
+  LaserName: LaserGreen
   StartPositions:
   - {fileID: 4691759454646056584}
 --- !u!1 &6075479451202386531

@@ -1,16 +1,16 @@
+using BoundfoxStudios.ObjectPoolingSample.ObjectPooling;
 using UnityEngine;
 
 namespace BoundfoxStudios.ObjectPoolingSample.Enemy
 {
   public class EnemySpawner : MonoBehaviour
   {
-    public Vector2 SpawnIntervalMinMax;
-    public EnemyController EnemyPrefab;
-    public Camera Camera;
-    public float YOffset = 0.5f;
-    public bool AllowSpawning;
-
     private float _nextSpawnTime;
+    public bool AllowSpawning;
+    public Camera Camera;
+    public EnemyController EnemyPrefab;
+    public Vector2 SpawnIntervalMinMax;
+    public float YOffset = 0.5f;
 
     private void Start()
     {
@@ -36,8 +36,15 @@ namespace BoundfoxStudios.ObjectPoolingSample.Enemy
       var topRight = Camera.ViewportToWorldPoint(new Vector3(1, 1));
       var randomPosition = Vector3.Lerp(topLeft, topRight, Random.value);
 
-      Instantiate(EnemyPrefab, new Vector3(randomPosition.x, randomPosition.y - YOffset, 0), Quaternion.identity);
-      
+      var enemy = ObjectPoolManager.Instance.Get("Enemy");
+
+      if (!enemy)
+      {
+        return;
+      }
+
+      enemy.transform.position = new Vector3(randomPosition.x, randomPosition.y - YOffset, 0);
+      enemy.SetActive(true);
       RandomizeNextSpawnTime();
     }
   }

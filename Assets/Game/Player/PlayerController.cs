@@ -6,9 +6,9 @@ namespace BoundfoxStudios.ObjectPoolingSample.Player
   [RequireComponent(typeof(Rigidbody2D))]
   public class PlayerController : MonoBehaviour
   {
+    private Rigidbody2D _rigidbody;
     public Camera Camera;
     public LaserShooter LaserShooter;
-    private Rigidbody2D _rigidbody;
 
     private void Start()
     {
@@ -25,7 +25,7 @@ namespace BoundfoxStudios.ObjectPoolingSample.Player
     {
       if (Input.GetMouseButton(0))
       {
-        LaserShooter.Shoot(); 
+        LaserShooter.Shoot();
       }
     }
 

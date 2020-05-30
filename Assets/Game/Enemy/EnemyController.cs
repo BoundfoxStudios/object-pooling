@@ -9,8 +9,8 @@ namespace BoundfoxStudios.ObjectPoolingSample.Enemy
     private float _bottomY;
 
     private Rigidbody2D _rigidbody;
-    public float Speed = 1.2f;
     public LaserShooter LaserShooter;
+    public float Speed = 1.2f;
 
     private bool ReachedBottom => transform.position.y < _bottomY;
 
@@ -27,7 +27,7 @@ namespace BoundfoxStudios.ObjectPoolingSample.Enemy
 
       if (ReachedBottom)
       {
-        Destroy(gameObject, 5f);
+        gameObject.SetActive(false);
       }
     }
 

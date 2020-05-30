@@ -5,11 +5,10 @@ namespace BoundfoxStudios.ObjectPoolingSample.Laser
 {
   public class Laser : MonoBehaviour
   {
+    private float _bottomY;
+    public string CollisionTag;
     public GameObject HitEffectPrefab;
     public float Speed;
-    public string CollisionTag;
-    
-    private float _bottomY;
     private bool ReachedBottom => transform.position.y < _bottomY;
 
     private void Start()
@@ -21,17 +20,17 @@ namespace BoundfoxStudios.ObjectPoolingSample.Laser
     {
       if (other.CompareTag(CollisionTag))
       {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
 
         var effectInstance = Instantiate(HitEffectPrefab, transform.position, Quaternion.identity);
 
         Destroy(effectInstance.gameObject, 0.2f);
 
         // Don't destroy the player for this demo :-)
-        
+
         if (other.GetComponent<EnemyController>())
         {
-          Destroy(other.gameObject);
+          other.gameObject.SetActive(false);
         }
       }
     }
@@ -41,10 +40,10 @@ namespace BoundfoxStudios.ObjectPoolingSample.Laser
       var newPosition = transform.position + Vector3.up * Speed * Time.deltaTime;
 
       transform.position = newPosition;
-      
+
       if (ReachedBottom)
       {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
       }
     }
   }
